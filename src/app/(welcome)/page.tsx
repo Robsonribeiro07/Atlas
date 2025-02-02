@@ -17,19 +17,19 @@ export default function Home() {
   const {isSignedIn} = useAuth()
 
   useEffect(() => {
-     
-    if(typeof window!== 'undefined'){
-      const getThemeLocalStorage = localStorage.getItem('theme');
-      if(getThemeLocalStorage){
-      setThemeLocalStorage(getThemeLocalStorage);
-
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        setThemeLocalStorage(storedTheme);
+      } else {
+        setThemeLocalStorage(theme!); // Caso não haja, use o tema atual do Next.js
       }
     }
-  },[theme]) 
+  }, [theme]);
+  
+  const selectedTheme = localStorageTheme || theme;
+  
 
-  const selectedTheme = localStorageTheme ? localStorageTheme : theme
-
-  console.log(selectedTheme)
   const hrefButton = isSignedIn ? '/dashboard' : '/auth/sign-in'
 
   return (
