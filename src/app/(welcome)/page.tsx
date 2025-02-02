@@ -25,7 +25,7 @@ export default function Home() {
 
       }
     }
-  },[]) 
+  },[theme]) 
 
   const selectedTheme = localStorageTheme ? localStorageTheme : theme
 

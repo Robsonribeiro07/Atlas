@@ -1,9 +1,11 @@
 "use client"
 import Image from 'next/image'
-import LogoSvg from '../../public/logo.svg'
 import { ModeToggle } from './toggle-theme'
 import { DropDowmMenuProfile } from './Profile/drop-dowm-menu-profile'
+import { useGetLogoSvg } from '@/hooks/use-get-logo'
 export function HeaderWelcome() {
+
+    const {LogoSvg} = useGetLogoSvg()
     return (
         <header className='w-full justify-between flex items-center py-5'>
             <div className='flex gap-2 items-center'>

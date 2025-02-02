@@ -9,6 +9,8 @@ const ParticlesCanvas: React.FC<ParticlesCanvasProps> = ({ theme = 'dark' }) => 
 const canvasRef = useRef<HTMLCanvasElement>(null);
 const mouse = useRef({ x: 0, y: 0 });
 
+
+console.log(theme)
 useEffect(() => {
   const canvas = canvasRef.current;
   if (!canvas) return;
