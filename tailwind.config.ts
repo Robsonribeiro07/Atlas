@@ -40,17 +40,44 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-			TextColorPrimary: {
-				DEFAULT: '#eeeeee',
-				foreground: '#151615'
+			  TextColorPrimary: {
+				DEFAULT: 'hsl(var(--TextColorPrimary))',
+				foreground: 'hsl(var(--TextColorPrimary-foreground))',
+			  },
+			grayColor: {
+				DEFAULT: 'hsl(var(--gray-200))',
 			},
-			gray100: {
-				DEFAULT: '#77909a'
-			},
+			grayColor300: 'hsl(var(--gray-300))',
 			backgroundGray: {
 				DEFAULT: '#0a0a0a'
 			},
-  			border: '#262626',
+			graySkeleton: "hsl(var(--gray-skelton))",
+			prioridadeAlta: {
+				DEFAULT: 'hsl(var(--prioridade-alta))',
+				foreground: 'hsl(var(--prioridade-alta-foreground))'
+			},
+			prioridadeMedia: {
+				DEFAULT: 'hsl(var(--prioridade-media))',
+                foreground: 'hsl(var(--prioridade-media-foreground))'
+			},
+			prioridadeBaixa: {
+				DEFAULT: 'hsl(var(--prioridade-baixa))',
+                foreground: 'hsl(var(--prioridade-baixa-foreground))'
+			},
+			prioridadeAltaChecked: {
+				DEFAULT: 'hsl(var(--prioridade-alta-checked))',
+				foreground: 'hsl(var(--prioridade-alta-checked-foreground))'
+			},
+			prioridadeMediaChecked: {
+				DEFAULT: 'hsl(var(--prioridade-media-checked))',
+                foreground: 'hsl(var(--prioridade-media-checked-foreground))'
+			},
+			prioridadeBaixaChecked: {
+				DEFAULT: 'hsl(var(--prioridade-baixa-checked))',
+                foreground: 'hsl(var(--prioridade-baixa-checked-foreground))'
+			},
+			
+  			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			chart: {

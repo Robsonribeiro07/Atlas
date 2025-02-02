@@ -3,7 +3,7 @@ import FrequencySvg from '../../../public/frenquecy.svg'
 export function Header() {
     return (
         <div className="p-3 flex items-center gap-2 font-[500]">
-            <p className='w-fit rounded-full bg-[#141415] p-2'>
+            <p className='w-fit rounded-full bg-grayColor p-2'>
             <Image src={FrequencySvg} alt=''/>
             </p>
 

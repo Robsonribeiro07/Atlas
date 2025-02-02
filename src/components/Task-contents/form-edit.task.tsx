@@ -3,16 +3,13 @@ import { Select, SelectTrigger, SelectValue } from "../ui/select"
 import { SelectPriority } from "./select-priority"
 import { Button } from "../ui/button"
 import { DialogClose } from "../ui/dialog"
-import { useShowButtonEditOrRemove } from "@/store/state-show-edit-or-remove-task"
 import { useEditTask } from "@/hooks/use-edit-task"
 
 export function EditTaskForm() {
 
     const {handleSubmit, control, register} = useEditTask()
 
-    const {editingContent} = useShowButtonEditOrRemove()
   
-    console.log(editingContent)
     
 
     return (

@@ -10,7 +10,7 @@ interface cardHabit {
 }
 export function CardHabit({checked, HabitId, IsDate}: cardHabit) {
 
-    const Checked = checked ? "bg-green-500 " : "bg-[#0c0c0c] hover:bg-[gray]"
+    const Checked = checked ? "bg-green-500 " : "bg-graySkeleton hover:bg-[gray]"
 
 
 
@@ -27,6 +27,6 @@ export function CardHabit({checked, HabitId, IsDate}: cardHabit) {
         console.log(IsDate)
     }
     return (
-        <Button className={`rounded-[6px] bg-[#0c0c0d] border ${Checked} `} size={'card'} onClick={handleFinsishedHabit}/>
+        <Button className={`rounded-[6px]  border ${Checked} `} size={'card'} onClick={handleFinsishedHabit}/>
     )
 }

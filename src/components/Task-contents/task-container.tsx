@@ -7,21 +7,35 @@ export function TaskContainer() {
   const {List} = useGetList()
 
 
-  console.log(List)
+
+  const SliceOrdenate = List?.task.slice().reverse().sort((a,b) => {
+    if(a.status === 'concluido' && b.status !== 'concluido') {
+      return 1
+    } 
+    if(a.status !== 'concluido' && b.status === 'concluido') {
+      return -1
+    }
+    return 0
+  })
+
+
 
     return (
         <div className="flex flex-1 flex-col  items-start h-full overflow-auto " >
 
-            {List?.task && (
-              List.task.slice().reverse().map((task) => {
+            {SliceOrdenate && (
+              SliceOrdenate.map((task) => {
                 const {_id, prioridade,tarefa, status} = task
 
                 const Checked = status === "concluido" ? true : false
+
+                console.log(Checked)
                 return (
                   <Task key={_id} prioridade={prioridade} tarefa={tarefa}  checked={Checked} _id={_id} />
                 )
               })
             )}
+            
             
         </div>
     )

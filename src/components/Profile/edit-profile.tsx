@@ -7,7 +7,7 @@ import Input from "./input";
 export function EditProfile() {
     const {theme} = useTheme()
     return (
-        <SheetContent className="bg-[#0a0a0a] text-TextColorPrimary">
+        <SheetContent className="bg-background text-TextColorPrimary">
             <ParticlesCanvas theme={theme ?? "dark"}/>
             <SheetHeader>
                 <SheetTitle className="text-TextColorPrimary">

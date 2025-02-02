@@ -64,7 +64,7 @@ const StyledWrapper = styled.div`
   }
 
   .gearbox {
-    background: #0a0a0a;
+    background: transprent;
     height: 150px;
     width: 300px;
     position: relative;
@@ -137,7 +137,7 @@ const StyledWrapper = styled.div`
     height: 36px;
     width: 36px;
     border-radius: 36px;
-    background: #0a0a0a;
+    background: hsl(222, 22%, 35%);
     top: 50%;
     left: 50%;
     margin-left: -18px;

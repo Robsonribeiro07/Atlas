@@ -12,7 +12,7 @@ export function TaskContents() {
      const Clear = useShowButtonEditOrRemove((state) => state.Clear)
    
     return (
-        <div className="border lg:w-[50%] w-full  h-[50vh] rounded-2xl flex flex-col min-h-fit" onMouseLeave={Clear}>
+        <div className="border lg:w-[50%] w-full shadow-xl h-[50vh] rounded-2xl flex flex-col min-h-fit z-10" onMouseLeave={Clear} >
             <header className="flex p-3 justify-between items-center" >
                 <div>
                     <p className="font-[500] text-TextColorPrimary tracking-wide">Tarefas para hoje</p>

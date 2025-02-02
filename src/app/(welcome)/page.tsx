@@ -48,12 +48,13 @@ export default function Home() {
         </p>
 
         <div className="tracking-wide  flex gap-3 items-center mt-3 "> 
-          <Button asChild>
-            <Link href={hrefButton}>
+          <Button asChild className="rounded-[5px]">
+            <Link href={hrefButton} >
+
             Começar <ChevronRight/>
             </Link>
           </Button>
-            <Button className="bg-[#eeefee] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#eeefee]" asChild>
+            <Button className="bg-[#eeefee] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#eeefee] rounded-[5px]" asChild>
             <Link href='https://www.instagram.com/robson_ribeiro.07/'>
             Instragram <Instagram/>
             </Link>

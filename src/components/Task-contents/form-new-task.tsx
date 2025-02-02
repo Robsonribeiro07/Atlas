@@ -24,7 +24,7 @@ export function FormNewTask() {
                 return (
                 <Select defaultValue="Media" onValueChange={onChange} >
                 <SelectTrigger className="w-[40%] relative focus:outline focus:outline-green-500 focus:outline-[2.5px]  " >
-                    <p className="absolute top-[-10px] text-[0.7rem] bg-[#0a0a0a]">Selecionar prioridade</p>
+                    <p className="absolute top-[-10px] text-[0.7rem] bg-background">Selecionar prioridade</p>
                    <SelectValue/>
                 </SelectTrigger>
 
@@ -36,7 +36,7 @@ export function FormNewTask() {
 
         <div className="w-full mt-3 flex justify-end gap-3">
             <DialogClose asChild>
-            <Button className="bg-transparent border">
+            <Button className="bg-transparent border text-background-foreground">
                 Cancelar
             </Button>
             

@@ -1,3 +1,4 @@
+
 interface Priority {
     prioridade: "Alta" | "Media" | "Baixa"
     checked?: boolean
@@ -6,11 +7,10 @@ interface Priority {
 export function Priority({prioridade,checked}: Priority) {
 
 
-
     const color  = {
-        Alta: checked ? "" : "bg-[#39151b] text-[#fb7185]",
-        Media: checked ? "" : "bg-[#372c0a] text-[#f4c414]",
-        Baixa: checked ? "" : "bg-[#142239] text-[#60a5fa]"
+        Alta: checked ? "bg-prioridadeAltaChecked text-prioridadeAltaChecked-foreground" : "bg-prioridadeAlta text-prioridadeAlta-foreground",
+        Media: checked ? "bg-prioridadeMediaChecked text-prioridadeMediaChecked-foreground" : "bg-prioridadeMedia text-prioridadeMedia-foreground",
+        Baixa: checked ? "bg-prioridadeBaixaChecked text-prioridadeBaixaChecked-foreground" : "bg-prioridadeBaixa text-prioridadeBaixa-foreground"
 
     }
 

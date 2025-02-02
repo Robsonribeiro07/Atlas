@@ -9,13 +9,13 @@ export function AddNewTask() {
 
     const {isOpen, toggle} = useStateNewTaskDialog()
     return (
-        <div className="flex  items-center ml-5 gap-3 h-full relative text-[#94948c] font-[500]">
+        <div className="flex  items-center ml-5 gap-3 h-full relative font-[500]">
              <Dialog open={isOpen} onOpenChange={toggle}>
                 <DialogTrigger asChild>
                 <Button className="flex items-center gap-2 cursor-pointer bg-transparent hover:bg-transparent text-[#94948c] ">
                 <Plus size={15}/>
 
-             <p className="text-sm">Adiciona nova tarefa</p>
+             <p className="text-sm text-TextColorPrimary-foreground dark:text-TextColorPrimary">Adiciona nova tarefa</p>
 
              </Button>
              </DialogTrigger>

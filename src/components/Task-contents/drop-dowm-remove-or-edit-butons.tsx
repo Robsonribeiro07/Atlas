@@ -10,9 +10,13 @@ interface TaskProps {
     prioridade: "Alta" | "Media" | "Baixa"
     tarefa: string
     _id: string
+    checked: boolean
 
 }
-export function DropDowmRemoveOrEditButons({prioridade, tarefa, _id}: TaskProps) {
+export function DropDowmRemoveOrEditButons({prioridade, tarefa, _id, checked}: TaskProps) {
+
+
+    const convertCheckd = checked ? "concluido" : "pendente"
 
     const {setEditingContentTask, isOpenDropDowm, toogleDropDowm} = useShowButtonEditOrRemove()
     
@@ -20,7 +24,7 @@ export function DropDowmRemoveOrEditButons({prioridade, tarefa, _id}: TaskProps)
 
     
     const handleEditingContent = () => {
-           setEditingContentTask({_id,tarefa,prioridade})
+           setEditingContentTask({_id,tarefa,prioridade, status: convertCheckd})
     }
    
 

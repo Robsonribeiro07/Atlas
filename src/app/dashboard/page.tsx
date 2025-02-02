@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import Card from "@/components/person-bacground";
 import { ProgressContent } from "@/components/progress/progress-content";
 import { TaskContents } from "@/components/Task-contents/task-contents";
+import SwitchTheme from "@/components/toggle-theme-dashboard";
 import { useGetTask } from "@/hooks/use-get-task";
 
 function Dashboard() {
@@ -25,12 +26,14 @@ function Dashboard() {
             
             </div>
  
-            <div className="lg:w-[55vw] w-full mx-auto mt-3 flex flex-col gap-5 lg:flex lg:flex-row lg:gap-0 justify-around     ">
+            <div className="lg:full w-full mx-auto mt-3 flex flex-col gap-5 lg:flex lg:flex-row lg:gap-0 justify-between px-3">
                 <TaskContents/>
                 <ProgressContent/> 
             </div>
 
             <Footer/>
+
+            <SwitchTheme/>
         </div>
         
     )

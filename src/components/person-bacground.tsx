@@ -1,34 +1,34 @@
-
-"use client"
+"use client";
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Card = () => {
-
   const [isReady, setIsReady] = useState(false);
+  const { theme } = useTheme();
 
+  // Cor do box-shadow com base no tema
+  const shadowColor = theme === "dark" ? "#ffff" : "#0a0a0a";
   useEffect(() => {
-    const timer = setTimeout(() => setIsReady(true), 100) 
+    const timer = setTimeout(() => setIsReady(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  if (!isReady) return null; 
+  if (!isReady) return null;
 
   return (
-    <StyledWrapper >
+    <StyledWrapper $shadowColor={shadowColor}>
       <div className="card relative">
         <Image src="https://uiverse.io/astronaut.png" alt="" className="image" width={300} height={300} />
         <div className="heading"></div>
-        <div className="icons">
-         
-        </div>
+        <div className="icons"></div>
       </div>
     </StyledWrapper>
   );
-}
+};
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div<{ $shadowColor: string}>`
   /* HOLD THE ASTRONAUT */
 
   .card {
@@ -39,7 +39,7 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #0a0a0a;
+    background-color: transparent; /* Fundo transparente */
     color: white;
     font-family: Montserrat;
     font-weight: bold;
@@ -49,12 +49,14 @@ const StyledWrapper = styled.div`
     z-index: 1;
     row-gap: 1em;
   }
+
   .card img {
     width: 12em;
     margin-right: 1em;
     animation: move 10s ease-in-out infinite;
     z-index: 5;
   }
+
   .image:hover {
     cursor: -webkit-grab;
     cursor: grab;
@@ -65,35 +67,43 @@ const StyledWrapper = styled.div`
     height: 20px;
   }
 
+  /* Removido o fundo grande */
   .card::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    inset: -3px;
+    inset: 0;
     border-radius: 10px;
     transform: translate(-5px, 250px);
     transition: 0.4s ease-in-out;
     z-index: -1;
+    /* Apenas sombras com base no tema, sem cor de fundo */
+    box-shadow: 220px 118px ${(props) => props.$shadowColor}, 280px 176px ${(props) => props.$shadowColor}, 40px 50px ${(props) => props.$shadowColor},
+      60px 180px ${(props) => props.$shadowColor}, 120px 130px ${(props) => props.$shadowColor}, 180px 176px ${(props) => props.$shadowColor}, 220px 290px ${(props) => props.$shadowColor},
+      520px 250px ${(props) => props.$shadowColor},  220px ${(props) => props.$shadowColor}, 50px 350px ${(props) => props.$shadowColor}, 10px 230px ${(props) => props.$shadowColor};
   }
+
   .card:hover::before {
     width: 150%;
     height: 100%;
     margin-left: -4.25em;
   }
+
   .card::after {
     content: "";
     position: absolute;
     inset: 2px;
     border-radius: 20px;
     transition: all 0.4s ease-in-out;
-    z-index: -1;
+    z-index: -2; /* Ajustado para garantir o efeito sem sobrepor outros elementos */
   }
 
   .heading {
     z-index: 2;
     transition: 0.4s ease-in-out;
   }
+
   .card:hover .heading {
     letter-spacing: 0.025em;
   }
@@ -107,14 +117,15 @@ const StyledWrapper = styled.div`
     height: 2px;
     border-radius: 50%;
     opacity: 1;
-    box-shadow: 220px 118px #fff, 280px 176px #fff, 40px 50px #fff,
-      60px 180px #fff, 120px 130px #fff, 180px 176px #fff, 220px 290px #fff,
-      520px 250px #fff, 400px 220px #fff, 50px 350px #fff, 10px 230px #fff;
+    box-shadow: 220px 118px ${(props) => props.$shadowColor}, 280px 176px ${(props) => props.$shadowColor}, 40px 50px ${(props) => props.$shadowColor},
+      60px 180px ${(props) => props.$shadowColor}, 120px 130px ${(props) => props.$shadowColor}, 180px 176px ${(props) => props.$shadowColor}, 220px 290px ${(props) => props.$shadowColor},
+      520px 250px ${(props) => props.$shadowColor}, 400px 220px ${(props) => props.$shadowColor}, 50px 350px ${(props) => props.$shadowColor}, 10px 230px ${(props) => props.$shadowColor};
     z-index: -1;
     transition: 1s ease;
     animation: 1s glowing-stars linear alternate infinite;
     animation-delay: 0s;
   }
+
   .icons::before {
     content: "";
     position: absolute;
@@ -124,14 +135,15 @@ const StyledWrapper = styled.div`
     height: 2px;
     border-radius: 50%;
     opacity: 1;
-    box-shadow: 140px 20px #fff, 425px 20px #fff, 70px 120px #fff, 20px 130px #fff,
-      110px 80px #fff, 280px 80px #fff, 250px 350px #fff, 280px 230px #fff,
-      220px 190px #fff, 450px 100px #fff, 380px 80px #fff, 520px 50px #fff;
+    box-shadow: 140px 20px ${(props) => props.$shadowColor}, 425px 20px ${(props) => props.$shadowColor}, 70px 120px ${(props) => props.$shadowColor}, 20px 130px ${(props) => props.$shadowColor},
+      110px 80px ${(props) => props.$shadowColor}, 280px 80px ${(props) => props.$shadowColor}, 250px 350px ${(props) => props.$shadowColor}, 280px 230px ${(props) => props.$shadowColor},
+      220px 190px ${(props) => props.$shadowColor}, 450px 100px ${(props) => props.$shadowColor}, 380px 80px ${(props) => props.$shadowColor}, 520px 50px ${(props) => props.$shadowColor};
     z-index: -1;
     transition: 1.5s ease;
     animation: 1s glowing-stars linear alternate infinite;
     animation-delay: 0.4s;
   }
+
   .icons::after {
     content: "";
     position: absolute;
@@ -145,17 +157,17 @@ const StyledWrapper = styled.div`
       380px 350px #fff, 546px 170px #fff, 420px 180px #fff, 370px 150px #fff,
       200px 250px #fff, 80px 20px #fff, 190px 50px #fff, 270px 20px #fff,
       120px 230px #fff, 350px -1px #fff, 150px 369px #fff;
-    z-index: -1;
+    z-index: -2; /* Ajustando o z-index para não sobrepor outros elementos */
     transition: 2s ease;
     animation: 1s glowing-stars linear alternate infinite;
     animation-delay: 0.8s;
   }
+
   .card:hover .heading::before,
   .card:hover .icons::before,
   .card:hover .icons::after {
     filter: blur(3px);
   }
-
   .image:active {
     cursor: -webkit-grabbing;
     cursor: grabbing;
@@ -286,7 +298,6 @@ const StyledWrapper = styled.div`
     top: -700%;
     left: 1050%;
     rotate: -45deg;
-    width: 5em;
     height: 1px;
     background: linear-gradient(90deg, #ffffff, transparent);
     animation: 4s shootingStar ease-in-out infinite;

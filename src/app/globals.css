@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --font-roboto: 'Roboto', sans-serif
+    --font-roboto: 'Roboto', sans-serif;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
 
@@ -33,12 +33,41 @@
     --input: 0 0% 89.8%;
     --ring: 142 71% 45%;
 
+    --gray-200: 240 5% 96%;
+
+    --gray-300: 240 6% 90%;
+
+    --gray-skelton: 240, 7%, 88%;
+
+
+    --prioridade-alta: 351 100% 92%;
+    --prioridade-alta-foreground: 347 82% 50%;
+    
+    --prioridade-alta-checked: 351 100% 96%;
+    --prioridade-alta-checked-foreground: 347 77% 75%;
+    
+    --prioridade-media: 54 97% 86%;
+    --prioridade-media-foreground: 47 94% 40%;
+    
+    --prioridade-media-checked: 55 96% 90%;
+    --prioridade-media-checked-foreground: 47 63% 71%;
+    
+    --prioridade-baixa: 217 92% 95%;
+    --prioridade-baixa-foreground: 221 83% 56%;
+    
+    --prioridade-baixa-checked: 217 92% 95%;
+    --prioridade-baixa-checked-foreground: 221 77% 76%;
+    
+    
+
+
     --radius: 0.5rem;
   }
 
+  /* Tema escuro */
   .dark {
-    --background: 0, 0%, 4%
-    --foreground: 0 0% 98%;
+    --background: 0 0% 4%; /* Corrigido */
+    --foreground: 0 0% 98%; /* Corrigido */
 
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -61,12 +90,46 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
+
+    --gray-200: 240 5% 20%;
+
+    --gray-300: #19191a;
+
+    --gray-skelton: 0 0% 13%;
+
+
+
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 142 71% 45%;
+
+    --TextColorPrimary: #ffffff; /* Cor clara para o texto no modo escuro */
+    --TextColorPrimary-foreground: #0a0a0a; 
+
+    --prioridade-alta: 350 46% 15%;
+    --prioridade-alta-foreground: 347 89% 71%;
+    
+    --prioridade-alta-checked: 350 39% 10%;
+    --prioridade-alta-checked-foreground: 350 37% 38%;
+    
+    --prioridade-media: 45 64% 13%;
+    --prioridade-media-foreground: 51 96% 53%;
+    
+    --prioridade-media-checked: 45 45% 10%;
+    --prioridade-media-checked-foreground: 47 76% 28%;
+    
+    --prioridade-baixa: 217 47% 16%;
+    --prioridade-baixa-foreground: 217 92% 67%;
+    
+    --prioridade-baixa-checked: 218 40% 10%;
+    --prioridade-baixa-checked-foreground: 217 41% 36%;
+    
+    
+    
+
+    
   }
 }
-
 
 @layer base {
   * {
@@ -74,13 +137,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-roboto), sans-serif,
+    font-family: var(--font-roboto), sans-serif;
   }
 }
 
-body{
+body {
   overflow-x: hidden;
-  user-select: none
+  user-select: none;
 }
 
 ::-webkit-scrollbar {

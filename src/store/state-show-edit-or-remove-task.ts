@@ -4,6 +4,7 @@ interface editingContent {
   tarefa: string,
   prioridade: "Alta" | "Media" | "Baixa"
   _id: string;
+  status: string;
 }
 
 interface ShowEditOrRemoveTask {
@@ -26,6 +27,7 @@ export const useShowButtonEditOrRemove = create<ShowEditOrRemoveTask>((set,get) 
   isOpenDialog: false,
   isOpenDropDowm: false,
   editingContent: {
+    status: 'pendente',
     _id: '',
     prioridade: "Alta",
     tarefa: '',
@@ -39,13 +41,16 @@ export const useShowButtonEditOrRemove = create<ShowEditOrRemoveTask>((set,get) 
     set({ isEditing: ''})
   }, 
   setEditing: ({ _id }) => set({ isEditing: _id }),
-  setEditingContentTask({_id, prioridade, tarefa }) {
+  setEditingContentTask({_id, prioridade, tarefa, status }) {
+
     
     set({editingContent: {
       _id,
       prioridade,
       tarefa,
+      status
     } })
+
     
   },
   toogleDropDowm: () => set((state) => ({ isOpenDropDowm:!state.isOpenDropDowm })),

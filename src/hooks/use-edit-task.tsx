@@ -18,19 +18,23 @@ interface editingContent {
     tarefa: string,
     prioridade: "Alta" | "Media" | "Baixa"
     _id: string;
+    status: string
   }
 type schemaNewTask = z.infer<typeof SchemaNewTask>
 export function useEditTask() {
 
     const {user} = useUser()
 
-    const {editingContent, setEditingContentTask    , Clear} = useShowButtonEditOrRemove()
+    const {editingContent, setEditingContentTask, Clear, CloseDialog} = useShowButtonEditOrRemove()
+
     
+
     
-    const handleUpdateEditingContentState = ({prioridade, _id,tarefa}: editingContent) => {
+    const handleUpdateEditingContentState = ({prioridade, _id,tarefa, status}: editingContent) => {
         setEditingContentTask({
             prioridade,
             _id,
+            status,
             tarefa,
         })
 
@@ -51,7 +55,9 @@ export function useEditTask() {
         mutationFn: EditTask,
         onMutate: (Variable) => {
             reset()
-            const {TaskId,UpdateName,UpdatePrioridade} = Variable
+            Clear()
+            CloseDialog()
+            const {TaskId,UpdateName,UpdatePrioridade,} = Variable
             
 
             const Alltask = queryClient.getQueryData(queryKey)
@@ -65,12 +71,12 @@ export function useEditTask() {
                                 _id: task._id,
                                 prioridade: UpdatePrioridade,
                                 tarefa: UpdateName,
+                                status: editingContent.status
                             }
                         }
                         return task
                     })
                  
-                    Clear()
 
                     return {
                         ...data,
@@ -91,7 +97,7 @@ export function useEditTask() {
         },onSuccess(_, variables,) {
             const {TaskId,UpdateName,UpdatePrioridade} = variables
             toast.success('Tarefa editada com sucesso!')
-            handleUpdateEditingContentState({_id: TaskId, prioridade: UpdatePrioridade, tarefa: UpdateName})
+            handleUpdateEditingContentState({_id: TaskId, prioridade: UpdatePrioridade, tarefa: UpdateName, status: editingContent.status})
             
         },
     })
@@ -101,7 +107,6 @@ export function useEditTask() {
     
         const {prioridade,tarefa } = data
 
-        console.log(prioridade)
 
         mutate({TaskId: editingContent._id, UpdateName: tarefa, UpdatePrioridade: prioridade,UserId: user.id})
 
