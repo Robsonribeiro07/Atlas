@@ -49,7 +49,7 @@ export function useNewTask() {
 
                     return {
                         ...data,
-                        task: [...data.task, {_id: id, prioridade: prioridade, tarefa: tarefa}]
+                        task: [...data.task, {_id: id, prioridade: prioridade, tarefa: tarefa, status: 'pendente'}]
                     }
                 })
             }
@@ -65,6 +65,12 @@ export function useNewTask() {
             }
             
         },
+        onSettled: () => {
+            queryClient.invalidateQueries({
+                queryKey: queryKey
+            })
+
+        }
     })
     
     const handleSubmitForm =  (data: schemaHabit) => {

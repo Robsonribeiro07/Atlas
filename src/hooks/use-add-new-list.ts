@@ -13,17 +13,22 @@ export function useAddNewList() {
     onMutate(variables) {
       const { tarefa, prioridade , } = variables;
 
+
       const Alltask = queryClient.getQueryData(['users', userId]);
 
       if (Alltask) {
         queryClient.setQueryData(['users', userId], (data: GetListResponse) => {
-          const newTask = { tarefa, prioridade };
+          const newTask = { tarefa, prioridade, status: 'pendente'};
+
+          console.log(newTask)
           return {
             ...data,
             task: [...data.task, newTask, ],
           };
         });
       }
+
+      console.log(Alltask)
 
       return { Alltask };
     },

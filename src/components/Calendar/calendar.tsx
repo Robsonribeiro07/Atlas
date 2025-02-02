@@ -18,7 +18,7 @@ export function Calendar() {
 
     }
     return (
-        <div className="w-full h-[35vh] lg:h-[20vh] border shadow-xl mb-5 rounded-2xl mt-7 px-5 flex flex-col  gap-3 justify-start  py-4  overflow-auto md:overflow-visible">
+        <div className="w-full h-[35vh]  lg:h-[30vh] border shadow-xl mb-5 rounded-2xl mt-7 px-5 flex flex-col  gap-3 justify-start  py-4  overflow-auto md:overflow-visible">
 
             <div className="flex justify-between   w-full">
                 <div className="flex gap-2  items-center">

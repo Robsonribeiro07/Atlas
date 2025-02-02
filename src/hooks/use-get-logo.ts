@@ -9,7 +9,7 @@ export function useGetLogoSvg() {
     const {theme} = useTheme()
 
 
-    const LogoSvg: string = theme ? theme === 'dark' ? LogoWhite : LogoDark : LogoDark
+    const LogoSvg: string = theme ? theme === 'dark' ? LogoWhite : LogoDark : LogoWhite
 
     
 
