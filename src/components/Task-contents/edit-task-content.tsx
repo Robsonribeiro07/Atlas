@@ -20,7 +20,7 @@ export function EditTaskContent({handleEditingContent}: TaskContent) {
             </div>
 
             </DialogTrigger>
-            <DialogContent className="bg-backgroundGray text-TextColorPrimary">
+            <DialogContent className="bg-background ">
 
             <DialogHeader>
                 <DialogTitle className="font-[500]">
