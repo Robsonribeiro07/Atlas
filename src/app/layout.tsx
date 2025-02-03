@@ -48,12 +48,12 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
         </head>
       <body
-        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased dark:bg-[#0a0a0a] s`}
+        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased dark:bg-[#0a0a0a] `}
       >
         <QueryClientProvider client={queryClient}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
             storageKey="theme"
