@@ -1,8 +1,8 @@
 import { useGetHabits } from "@/hooks/use-get-habits";
 import { useCalendar } from "@/hooks/use-calendarProvider";
 import { useMemo } from "react";
-import { RandomIcons } from "../random-icons";
 import { CardHabit } from "./card-habit";
+import { TitleHabit } from "./title-habit";
 
 export function HabitContents() {
     const { weekDays } = useCalendar();
@@ -20,10 +20,7 @@ export function HabitContents() {
         return habits.slice().reverse().map(({ FinishedDays, Title, _id }) => (
             <div key={_id} className="flex items-center justify-between gap-5">
                 <div className="min-w-[70%] lg:min-w-0">
-                    <p className="flex gap-3"> 
-                        <RandomIcons />
-                        {Title}
-                    </p>
+                    <TitleHabit title={Title} HabitId={_id}/>
                 </div>
 
                 <div className="flex gap-[1.20rem] self-end">

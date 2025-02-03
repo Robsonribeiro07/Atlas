@@ -19,16 +19,18 @@ interface HabitsState {
     addNewHabit: ({ Title, _id }: newHabit) => void; // Função para adicionar um novo hábito
     updateHabit: (habitId: string, updateData: { data: string; checked: boolean; id: string }) => void;
     fetchHabits: (userId: string) => Promise<void>;
+    removeHabits: ({HabitId}: {HabitId: string}) => void,
     restoreBackOnFailed: () => void;
     backupFinishedDays: HabitResponse[];
     restoreBackupFinishedDats: () => void;
+
     isLoading: boolean;
     error: string | null;
 }
 
 export const useHabitsStore = create<HabitsState>((set, get) => ({
     habits: [],
-    backupHabits: [], // Inicializa o estado de backup
+    backupHabits: [],
     isLoading: false,
     error: null,
     backupFinishedDays: [],
@@ -52,24 +54,19 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
         }
     },
 
-    // Função para adicionar um novo hábito com backup e revertendo em caso de erro
     addNewHabit: ({ Title, _id }) => {
-        const currentHabits = get().habits; // Estado atual
-        set({ backupHabits: currentHabits }); // Salva o estado atual no backup
-
+        const currentHabits = get().habits; 
+        set({ backupHabits: currentHabits });
         if (!Title || !Title.trim()) {
             set({ error: 'Title is required' });
             return;
         }
 
         try {
-            // Adiciona o novo hábito ao estado
             const updatedHabits = [...currentHabits, { _id, Title, FinishedDays: [] }];
             set({ habits: updatedHabits });
 
-            // Caso a adição seja bem-sucedida, pode-se chamar outras ações aqui, se necessário
         } catch (error) {
-            // Caso ocorra um erro, restaura o estado anterior
             console.error('Erro ao adicionar hábito:', error);
             set({ habits: get().backupHabits, error: 'Failed to add habit' });
         }
@@ -108,7 +105,15 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
             return { habits: updatedHabits };
         });
     },
-   
+    removeHabits: ({HabitId}) => {
+        const currentHabits = get().habits
+
+        const UpdateHabitWithoutTheHabitDeleted = currentHabits.filter((habits) => habits._id !== HabitId)
+
+        if(UpdateHabitWithoutTheHabitDeleted) {
+            set({ habits: UpdateHabitWithoutTheHabitDeleted })
+        }
+    },
     restoreBackupFinishedDats: () => set({ habits: get().backupFinishedDays }),
 
     // Função para restaurar manualmente o estado de backup
